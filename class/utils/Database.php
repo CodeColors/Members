@@ -10,8 +10,12 @@ class Database
 {
     public $host = 'localhost';
     public $database = 'members';
-    public $username = 'root';
-    public $password = '';
+    private $username = 'root';
+    private $password = '';
+
+    function __construct(){
+        return $this;
+    }
 
     private function GetDatabase(){
         try{
@@ -25,9 +29,12 @@ class Database
 
     public function DoSQLRequest($request, $array){ // SQL Request + Array of index champs
         $db = $this->GetDatabase();
-        $s = $db->prepare($request);
-        $result = $s-execute($array);
-        return $result;
+        if($db){
+            $s = $db->prepare($request);
+            $s-execute($array);
+            return $s;
+        }
+
     }
 
 

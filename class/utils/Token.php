@@ -29,8 +29,8 @@ class Token
         return $url;
     }
 
-    public function CheckingToken($expectedToken, $getVar, $postVar, $sessionVar){
-        if(isset($getVar['token']) AND $getVar['token'] == $expectedToken || isset($postVar['token']) AND $postVar['token'] == $expectedToken || isset($sessionVar['token']) AND $sessionVar == $expectedToken) {
+    public function CheckingToken($expectedToken, $checkVar){
+        if(isset($checkVar['token']) AND $checkVar['token'] == $expectedToken) {
             return true;
         }else{
             return false;
