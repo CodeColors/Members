@@ -13,9 +13,9 @@ require('utils/Session.php');
 class Auth
 {
 
-    public function ForceLogUser($password){ // Register case only. (+ development)
+    public function ForceLogUser($id){ // Register case only. (+ development)
         $db = new Database();
-        $user = $db->DoSQLRequest('SELECT * FROM users WHERE password = :password', array( 'password' => $password ));
+        $user = $db->DoSQLRequest('SELECT * FROM users WHERE id = :id', array( 'id' => $id ));
 
         $SessionHandler = new Session();
         $session = $SessionHandler->SetSessionVar([], 'user', $user->fetch());
