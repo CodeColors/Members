@@ -30,9 +30,7 @@ class Manage
             }
             $link_str = implode(', ', $link_str);
 
-
-            $database->DoSQLRequest("UPDATE users SET ()");
-
+            $database->DoSQLRequest("UPDATE users SET ($link_str) WHERE id = :id", array( 'id' => $targetUser));
         }else{ // Or an external user
             if ($originUser['user']['rank'] >= $config->minrank_modify_targetuser ){
 
