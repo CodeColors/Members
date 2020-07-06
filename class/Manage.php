@@ -24,6 +24,15 @@ class Manage
         if ($originUser['user']['id'] == $targetUser){ // If it's a self modification
             $database = new Database();
 
+            $link_str = [];
+            for($i=0; $i<count($column); $i++){
+                $link_str[$i] = $column[$i] . " = " . $values[$i];
+            }
+            $link_str = implode(', ', $link_str);
+
+
+            $database->DoSQLRequest("UPDATE users SET ()");
+
         }else{ // Or an external user
             if ($originUser['user']['rank'] >= $config->minrank_modify_targetuser ){
 
